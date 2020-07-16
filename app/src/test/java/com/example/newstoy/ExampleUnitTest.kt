@@ -1,5 +1,7 @@
 package com.example.newstoy
 
+import android.util.Log
+import com.example.newstoy.di.DaggerMyComponent
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -17,6 +19,6 @@ class ExampleUnitTest {
 
     @Test
     fun testHelloWorld() {
-
+        println(DaggerMyComponent.create().getString())
     }
 }

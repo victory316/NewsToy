@@ -1,5 +1,5 @@
 # NewsToy
-Toy project with News API
+Toy project with News API | Seongwhan Choi
 
 Starting on 2020.07.16
 

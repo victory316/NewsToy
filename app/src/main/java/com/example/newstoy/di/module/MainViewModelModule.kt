@@ -8,7 +8,6 @@ import com.example.newstoy.viewmodel.MainViewModelFactory
 import dagger.Module
 import dagger.Provides
 
-@Module
 class MainViewModelModule {
 //    private fun getMainRepository(context: Context): MainRepository {
 //        return MainRepository.getInstance(

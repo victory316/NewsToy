@@ -3,14 +3,17 @@
     <item
         android:id="@+id/page_1"
         android:enabled="true"
+        android:icon="@drawable/baseline_article_black_36"
         android:title="@string/menu_1"/>
     <item
         android:id="@+id/page_2"
         android:enabled="true"
+        android:icon="@drawable/baseline_search_black_36"
         android:title="@string/menu_2"/>
 
     <item
         android:id="@+id/page_3"
         android:enabled="true"
+        android:icon="@drawable/baseline_bookmarks_black_36"
         android:title="@string/menu_3"/>
 </menu>

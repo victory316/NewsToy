@@ -16,9 +16,9 @@ class MainRepository private constructor(private val dao: MainDao) {
 
 
     fun getNewsList(): LiveData<List<NewsData>> {
-        if (dao.getNewsList().value!!.isEmpty()) {
-            doTestSearch()
-        }
+//        if (dao.getNewsList().value!!.isEmpty()) {
+//            doTestSearch()
+//        }
 
         return dao.getNewsList()
     }
@@ -30,6 +30,8 @@ class MainRepository private constructor(private val dao: MainDao) {
             .subscribe(
                 {
                     Timber.tag("queryTest").d("result : ${it}")
+
+                    dao.insertNewsTransaction(it.articles)
 
                     it.articles.forEach { news ->
                         Timber.tag("queryTest").d("news : $news")

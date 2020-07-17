@@ -11,23 +11,23 @@ data class NewsData(
     val index: Int,
 
     @SerializedName("author")
-    val author: String,
+    val author: String?,
 
     @SerializedName("title")
     val title: String,
 
     @SerializedName("description")
-    val description: String,
+    val description: String?,
 
     @SerializedName("url")
     val url: String,
 
     @SerializedName("urlToImage")
-    val urlToImage: String,
+    val urlToImage: String?,
 
     @SerializedName("publishedAt")
     val publishedAt: String,
 
     @SerializedName("content")
-    val content: String
+    val content: String?
 )

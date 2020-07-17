@@ -43,6 +43,8 @@ class NewsAdapter(private val mainViewModel: MainViewModel) :
             // TODO News data 업데이트
             binding.apply {
 
+                newsTitle.text = item.title
+
                 executePendingBindings()
             }
         }

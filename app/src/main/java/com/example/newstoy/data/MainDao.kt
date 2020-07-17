@@ -10,8 +10,13 @@ import com.example.newstoy.data.local.NewsData
 @Dao
 interface MainDao {
 
+    @Transaction
+    open fun insertNewsTransaction(list: List<NewsData>) {
+        insertNews(list)
+    }
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertNews(news: NewsData)
+    fun insertNews(news: List<NewsData>)
 
     @Query("SELECT * FROM news_data")
     fun getNewsList(): LiveData<List<NewsData>>

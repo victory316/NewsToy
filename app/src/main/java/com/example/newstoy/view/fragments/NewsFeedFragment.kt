@@ -13,6 +13,7 @@ import com.example.newstoy.util.InjectorUtils
 import com.example.newstoy.view.NewsAdapter
 import com.example.newstoy.viewmodel.MainViewModel
 import androidx.lifecycle.observe
+import timber.log.Timber
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -51,6 +52,10 @@ class NewsFeedFragment : Fragment() {
         binding.allList.layoutManager = layoutManager
 
         mainViewModel.newsData.observe(viewLifecycleOwner) {
+            it.forEach { news ->
+                Timber.tag("newsTest").d("adding : $news")
+            }
+
             adapter.submitList(it)
         }
     }

@@ -6,8 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.viewModels
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newstoy.R
+import com.example.newstoy.databinding.FragmentNewsFeedBinding
 import com.example.newstoy.util.InjectorUtils
+import com.example.newstoy.view.NewsAdapter
 import com.example.newstoy.viewmodel.MainViewModel
 
 // TODO: Rename parameter arguments, choose names that match
@@ -29,20 +32,34 @@ class NewsFeedFragment : Fragment() {
         InjectorUtils.provideMainViewModel(this)
     }
 
+    private lateinit var binding : FragmentNewsFeedBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
+    }
+
+    private fun setupUi() {
+        val layoutManager = LinearLayoutManager(requireActivity())
+        val adapter = NewsAdapter(mainViewModel)
+
+        binding.allList.adapter = adapter
+        binding.allList.layoutManager = layoutManager
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        binding = FragmentNewsFeedBinding.inflate(inflater, container, false)
+        setupUi()
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_news_feed, container, false)
+        return binding.root
     }
 
     companion object {

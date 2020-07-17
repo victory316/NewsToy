@@ -20,6 +20,11 @@ class MainRepository private constructor(private val dao: MainDao) {
             .subscribe(
                 {
                     Timber.tag("queryTest").d("result : ${it}")
+
+                    it.articles.forEach { news ->
+                        Timber.tag("queryTest").d("news : $news")
+                    }
+
                 }, {
                     Timber.tag("queryTest").d("error! : $it")
                 }

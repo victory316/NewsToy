@@ -14,5 +14,5 @@ data class QueryData(
     val totalResults: Int,
 
     @SerializedName("articles")
-    val articles: List<ArticlesData>
+    val articles: List<NewsData>
 )

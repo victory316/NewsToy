@@ -48,8 +48,14 @@ class NewsFeedFragment : Fragment() {
         val layoutManager = LinearLayoutManager(requireActivity())
         val adapter = NewsAdapter(mainViewModel)
 
-        binding.allList.adapter = adapter
-        binding.allList.layoutManager = layoutManager
+        with (binding) {
+            allList.adapter = adapter
+            allList.layoutManager = layoutManager
+
+            refreshLayout.setOnRefreshListener {
+                mainViewModel.testSearch()
+            }
+        }
 
         mainViewModel.newsData.observe(viewLifecycleOwner) {
             it.forEach { news ->
@@ -57,6 +63,12 @@ class NewsFeedFragment : Fragment() {
             }
 
             adapter.submitList(it)
+        }
+
+        mainViewModel.refreshStatus.observe(viewLifecycleOwner) {
+            Timber.tag("refreshTest").d("refresh finish")
+
+            binding.refreshLayout.isRefreshing = false
         }
     }
 

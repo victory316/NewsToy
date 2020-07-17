@@ -5,6 +5,7 @@ import com.example.newstoy.data.local.NewsData
 import com.example.newstoy.di.component.DaggerApiComponent
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import io.reactivex.subjects.PublishSubject
 import timber.log.Timber
 
 /**
@@ -14,6 +15,11 @@ class MainRepository private constructor(private val dao: MainDao) {
 
     private lateinit var disposable: Disposable
 
+    private var queryFinish = PublishSubject.create<Boolean>()
+
+    fun getQueryFininsh(): PublishSubject<Boolean> {
+        return queryFinish
+    }
 
     fun getNewsList(): LiveData<List<NewsData>> {
 //        if (dao.getNewsList().value!!.isEmpty()) {
@@ -37,6 +43,8 @@ class MainRepository private constructor(private val dao: MainDao) {
                     it.articles.forEach { news ->
                         Timber.tag("queryTest").d("news : $news")
                     }
+
+                    queryFinish.onNext(true)
 
                 }, {
                     Timber.tag("queryTest").d("error! : $it")

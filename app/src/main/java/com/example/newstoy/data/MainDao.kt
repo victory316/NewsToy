@@ -20,4 +20,7 @@ interface MainDao {
 
     @Query("SELECT * FROM news_data")
     fun getNewsList(): LiveData<List<NewsData>>
+
+    @Query("DELETE FROM news_data")
+    fun deleteNews()
 }

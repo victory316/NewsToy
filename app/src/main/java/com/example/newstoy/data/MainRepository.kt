@@ -29,6 +29,7 @@ class MainRepository private constructor(private val dao: MainDao) {
             .subscribeOn(Schedulers.io())
             .subscribe(
                 {
+                    dao.deleteNews()
                     Timber.tag("queryTest").d("result : ${it}")
 
                     dao.insertNewsTransaction(it.articles)

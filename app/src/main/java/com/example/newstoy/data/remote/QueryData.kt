@@ -1,5 +1,6 @@
 package com.example.newstoy.data.remote
 
+import com.example.newstoy.data.local.NewsData
 import com.google.gson.annotations.SerializedName
 
 /**

@@ -1,10 +1,8 @@
 package com.example.newstoy.data
 
 import androidx.lifecycle.LiveData
-import androidx.paging.DataSource
 import androidx.room.*
-import com.example.newstoy.data.remote.ArticlesData
-import com.example.newstoy.data.remote.NewsData
+import com.example.newstoy.data.local.NewsData
 
 /**
  * Room과의 Transaction을 위한 Dao interface
@@ -12,6 +10,9 @@ import com.example.newstoy.data.remote.NewsData
 @Dao
 interface MainDao {
 
-//    @Insert(onConflict = OnConflictStrategy.REPLACE)
-//    fun insertNews(news: NewsData)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertNews(news: NewsData)
+
+    @Query("SELECT * FROM news_data")
+    fun getNewsList(): LiveData<List<NewsData>>
 }

@@ -1,14 +1,33 @@
 package com.example.newstoy.data.local
 
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
 
-@Entity
+@Entity(tableName = "news_data")
 data class NewsData(
 
-    @ColumnInfo
     @PrimaryKey(autoGenerate = true)
-    val id : Int
-) {
-}
+    val index: Int,
+
+    @SerializedName("author")
+    val author: String,
+
+    @SerializedName("title")
+    val title: String,
+
+    @SerializedName("description")
+    val description: String,
+
+    @SerializedName("url")
+    val url: String,
+
+    @SerializedName("urlToImage")
+    val urlToImage: String,
+
+    @SerializedName("publishedAt")
+    val publishedAt: String,
+
+    @SerializedName("content")
+    val content: String
+)

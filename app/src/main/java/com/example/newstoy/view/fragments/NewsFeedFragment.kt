@@ -12,6 +12,7 @@ import com.example.newstoy.databinding.FragmentNewsFeedBinding
 import com.example.newstoy.util.InjectorUtils
 import com.example.newstoy.view.NewsAdapter
 import com.example.newstoy.viewmodel.MainViewModel
+import androidx.lifecycle.observe
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -48,6 +49,10 @@ class NewsFeedFragment : Fragment() {
 
         binding.allList.adapter = adapter
         binding.allList.layoutManager = layoutManager
+
+        mainViewModel.newsData.observe(viewLifecycleOwner) {
+            adapter.submitList(it)
+        }
     }
 
     override fun onCreateView(

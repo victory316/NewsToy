@@ -2,8 +2,8 @@ package com.example.newstoy.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newstoy.data.local.NewsData
 import com.example.newstoy.databinding.NewsDataItemBinding
@@ -13,7 +13,7 @@ import com.example.newstoy.viewmodel.MainViewModel
  *  페이징 구현을 위한 PagedListAdapter
  */
 class NewsAdapter(private val mainViewModel: MainViewModel) :
-    PagedListAdapter<NewsData, RecyclerView.ViewHolder>(AccountDiffCallback()) {
+    ListAdapter<NewsData, RecyclerView.ViewHolder>(AccountDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val binding = NewsDataItemBinding.inflate(
@@ -50,7 +50,7 @@ class NewsAdapter(private val mainViewModel: MainViewModel) :
 
     private class AccountDiffCallback : DiffUtil.ItemCallback<NewsData>() {
         override fun areItemsTheSame(oldItem: NewsData, newItem: NewsData): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.index == newItem.index
         }
 
         override fun areContentsTheSame(oldItem: NewsData, newItem: NewsData): Boolean {

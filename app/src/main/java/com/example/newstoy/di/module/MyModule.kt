@@ -1,4 +1,4 @@
-package com.example.newstoy.di
+package com.example.newstoy.di.module
 
 import dagger.Module
 import dagger.Provides
@@ -7,7 +7,7 @@ import dagger.Provides
 class MyModule {
 
     @Provides
-    fun proviedHelloWorld(): String {
+    fun provideHelloWorld(): String {
         return "Hello World"
     }
 }

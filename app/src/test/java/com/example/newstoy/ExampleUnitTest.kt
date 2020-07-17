@@ -1,7 +1,7 @@
 package com.example.newstoy
 
 import android.util.Log
-import com.example.newstoy.di.DaggerMyComponent
+import com.example.newstoy.di.component.DaggerMyComponent
 import org.junit.Test
 
 import org.junit.Assert.*

@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">NewsToy</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="menu_1">News</string>
+    <string name="menu_2">Search</string>
+    <string name="menu_3">Favorite</string>
 </resources>

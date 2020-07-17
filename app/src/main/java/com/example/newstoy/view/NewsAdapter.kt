@@ -44,6 +44,8 @@ class NewsAdapter(private val mainViewModel: MainViewModel) :
             binding.apply {
 
                 newsTitle.text = item.title
+                imageUrl = item.urlToImage
+                contents = item.description
 
                 executePendingBindings()
             }

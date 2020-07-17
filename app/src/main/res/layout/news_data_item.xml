@@ -5,6 +5,13 @@
 
     <data>
 
+        <variable
+            name="imageUrl"
+            type="String" />
+
+        <variable
+            name="contents"
+            type="String" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -27,6 +34,7 @@
 
             <TextView
                 android:id="@+id/news_title"
+                style="@style/MaterialAlertDialog.MaterialComponents.Title.Text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -34,10 +42,23 @@
                 app:layout_constraintRight_toLeftOf="@id/title_view"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/news_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="10dp"
+                android:text="@{contents}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/title_view"
+                app:layout_constraintTop_toBottomOf="@id/news_title" />
+
             <ImageView
                 android:id="@+id/title_view"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                setImageWithGlide="@{imageUrl}"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

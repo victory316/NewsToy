@@ -1,5 +1,7 @@
 package com.example.newstoy.data
 
+import com.example.newstoy.di.component.ApiComponent
+import com.example.newstoy.di.component.DaggerApiComponent
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
@@ -12,12 +14,12 @@ class MainRepository private constructor(private val dao: MainDao) {
     private lateinit var disposable: Disposable
 
     fun doTestSearch() {
-        disposable = BasicClient().getApi().testQuery()
+        disposable = BasicClient().getApi().testQuery("kr", DaggerApiComponent.create().getApiKey())
             .observeOn(Schedulers.computation())
             .subscribeOn(Schedulers.io())
             .subscribe(
                 {
-                    Timber.tag("queryTest").d("result : $it")
+                    Timber.tag("queryTest").d("result : ${it}")
                 }, {
                     Timber.tag("queryTest").d("error! : $it")
                 }

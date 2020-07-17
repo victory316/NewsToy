@@ -13,10 +13,14 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 class BasicClient {
     fun getApi(): BasicApi = Retrofit.Builder()
-        .baseUrl("https://eventregistry.org/api/v1/")
+        .baseUrl(BASE_URL)
         .client(OkHttpClient())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .addConverterFactory(GsonConverterFactory.create())
         .build()
         .create(BasicApi::class.java)
+
+    companion object {
+        const val BASE_URL = "https://newsapi.org/v2/"
+    }
 }

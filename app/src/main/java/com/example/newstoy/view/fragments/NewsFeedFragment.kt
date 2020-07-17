@@ -32,7 +32,7 @@ class NewsFeedFragment : Fragment() {
         InjectorUtils.provideMainViewModel(this)
     }
 
-    private lateinit var binding : FragmentNewsFeedBinding
+    private lateinit var binding: FragmentNewsFeedBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +40,6 @@ class NewsFeedFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-
     }
 
     private fun setupUi() {
@@ -57,6 +56,8 @@ class NewsFeedFragment : Fragment() {
     ): View? {
         binding = FragmentNewsFeedBinding.inflate(inflater, container, false)
         setupUi()
+
+        mainViewModel.testSearch()
 
         // Inflate the layout for this fragment
         return binding.root

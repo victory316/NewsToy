@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 class BasicClient {
     fun getApi(): BasicApi = Retrofit.Builder()
-        .baseUrl(DaggerApiComponent.create().getApiKey())
+        .baseUrl("https://eventregistry.org/api/v1/")
         .client(OkHttpClient())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .addConverterFactory(GsonConverterFactory.create())

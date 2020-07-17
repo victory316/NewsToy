@@ -1,7 +1,11 @@
 package com.example.newstoy.viewmodel
 
 import androidx.lifecycle.*
+import com.example.newstoy.data.BasicClient
 import com.example.newstoy.data.MainRepository
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 
 
 /**
@@ -12,4 +16,7 @@ class MainViewModel internal constructor(
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
+    fun testSearch() {
+        repository.doTestSearch()
+    }
 }

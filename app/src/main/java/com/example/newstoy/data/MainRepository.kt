@@ -22,9 +22,6 @@ class MainRepository private constructor(private val dao: MainDao) {
     }
 
     fun getNewsList(): LiveData<List<NewsData>> {
-//        if (dao.getNewsList().value!!.isEmpty()) {
-//            doTestSearch()
-//        }
 
         return dao.getNewsList()
     }

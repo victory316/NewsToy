@@ -33,19 +33,16 @@ class DetailActivity : AppCompatActivity() {
 
         window.sharedElementEnterTransition = MaterialContainerTransform().apply {
             addTarget(binding.detailConstraintParent)
-            pathMotion = MaterialArcMotion()
-            interpolator = FastOutSlowInInterpolator()
             fadeMode = MaterialContainerTransform.FADE_MODE_IN
             fitMode = MaterialContainerTransform.FIT_MODE_AUTO
-            duration = 300
+            duration = 500
         }
+
         window.sharedElementReturnTransition = MaterialContainerTransform().apply {
             addTarget(binding.detailConstraintParent)
-            pathMotion = MaterialArcMotion()
-            interpolator = FastOutSlowInInterpolator()
             fadeMode = MaterialContainerTransform.FADE_MODE_IN
             fitMode = MaterialContainerTransform.FIT_MODE_AUTO
-            duration = 250
+            duration = 500
         }
     }
 }

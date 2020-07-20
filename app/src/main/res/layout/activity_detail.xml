@@ -10,19 +10,19 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:transitionName="@string/item_transition_name"
         tools:context=".view.DetailActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/detail_constraint_parent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:transitionName="image_view">
 
             <ImageView
                 android:id="@+id/detail_image_view"
                 android:layout_width="0dp"
                 android:layout_height="300dp"
                 android:src="@color/colorAccent"
-                android:transitionName="image_view"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

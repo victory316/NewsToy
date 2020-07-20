@@ -46,12 +46,13 @@ class NewsAdapter(private val mainViewModel: MainViewModel) :
                 newsTitle.text = item.title
                 imageUrl = item.urlToImage
                 contents = item.description
+                root.transitionName = "image_view"
 
                 executePendingBindings()
 
                 root.setOnClickListener {
                     val viewList = listOf(
-                        Pair(titleView, "image_view"),
+                        Pair(binding.root, "image_view"),
                         Pair(newsTitle, "title_string"),
                         Pair(newsContent, "contents_string")
                     )

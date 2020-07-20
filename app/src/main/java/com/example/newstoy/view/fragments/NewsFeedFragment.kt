@@ -85,11 +85,19 @@ class NewsFeedFragment : Fragment() {
             val titlePair = Pair(pair.second[1].first, pair.second[1].second)
             val contentsPair = Pair(pair.second[2].first, pair.second[2].second)
 
+            Timber.tag("pairTest").d("${imagePair}")
+
+//            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+//                requireActivity(),
+//                imagePair,
+//                titlePair,
+//                contentsPair
+//            )
+
+
             val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
                 requireActivity(),
-                imagePair,
-                titlePair,
-                contentsPair
+                imagePair.first!!, imagePair.second!!
             )
 
             startActivity(

@@ -50,7 +50,13 @@ class NewsAdapter(private val mainViewModel: MainViewModel) :
                 executePendingBindings()
 
                 root.setOnClickListener {
-                    mainViewModel.showNewsDetail(item.index, root)
+                    val viewList = listOf(
+                        Pair(titleView, "image_view"),
+                        Pair(newsTitle, "title_string"),
+                        Pair(newsContent, "contents_string")
+                    )
+
+                    mainViewModel.showNewsDetail(item, viewList)
                 }
             }
         }

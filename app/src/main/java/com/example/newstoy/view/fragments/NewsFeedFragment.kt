@@ -8,13 +8,16 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.viewModels
 import android.view.ViewGroup
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.content.ContextCompat
+import androidx.core.util.Pair
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.newstoy.R
 import com.example.newstoy.databinding.FragmentNewsFeedBinding
 import com.example.newstoy.util.InjectorUtils
 import com.example.newstoy.view.NewsAdapter
 import com.example.newstoy.viewmodel.MainViewModel
 import androidx.lifecycle.observe
+import com.example.newstoy.R
 import com.example.newstoy.util.Constants.REQUEST_ID
 import com.example.newstoy.view.DetailActivity
 import timber.log.Timber
@@ -76,17 +79,22 @@ class NewsFeedFragment : Fragment() {
         }
 
         // Pair(A : id, B : View)
-        mainViewModel.detailViewId.observe(viewLifecycleOwner) { pair ->
+        mainViewModel.detailViewData.observe(viewLifecycleOwner) { pair ->
 
-            val options = ActivityOptions.makeSceneTransitionAnimation(
+            val imagePair = Pair(pair.second[0].first, pair.second[0].second)
+            val titlePair = Pair(pair.second[1].first, pair.second[1].second)
+            val contentsPair = Pair(pair.second[2].first, pair.second[2].second)
+
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
                 requireActivity(),
-                pair.second,
-                "shared_element_container" // The transition name to be matched in Activity B.
+                imagePair,
+                titlePair,
+                contentsPair
             )
 
             startActivity(
                 Intent(requireContext(), DetailActivity::class.java)
-                    .putExtra(REQUEST_ID, pair.first), options.toBundle()
+                    .putExtra(REQUEST_ID, pair.first.index), options.toBundle()
             )
         }
     }

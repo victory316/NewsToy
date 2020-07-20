@@ -7,11 +7,40 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:transitionName="@string/item_transition_name"
         tools:context=".view.DetailActivity">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/detail_image_view"
+                android:layout_width="0dp"
+                android:layout_height="300dp"
+                android:src="@color/colorAccent"
+                android:transitionName="image_view"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/detail_text_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="test test"
+                android:transitionName="content_string"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_image_view" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
 </layout>

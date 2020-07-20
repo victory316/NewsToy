@@ -35,7 +35,7 @@ class NewsAdapter(private val mainViewModel: MainViewModel) :
 
     class ResultViewHolder(
         private val binding: NewsDataItemBinding,
-        private val answersViewModel: MainViewModel
+        private val mainViewModel: MainViewModel
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: NewsData) {
@@ -48,6 +48,10 @@ class NewsAdapter(private val mainViewModel: MainViewModel) :
                 contents = item.description
 
                 executePendingBindings()
+
+                root.setOnClickListener {
+                    mainViewModel.showNewsDetail(item.index)
+                }
             }
         }
     }

@@ -22,6 +22,12 @@ class MainViewModel internal constructor(
     val refreshStatus: LiveData<Boolean>
         get() = _refreshStatus
 
+    // 아이템을 고를 경우 해당 아이템의 id를 전달하는 LiveData
+    private val _detailViewId = MutableLiveData<Int>()
+    val detailViewId: LiveData<Int>
+        get() = _detailViewId
+
+
     private lateinit var disposable: Disposable
 
     init {
@@ -30,6 +36,11 @@ class MainViewModel internal constructor(
 
     fun testSearch() {
         repository.doTestSearch()
+    }
+
+    // 상세 뉴스 페이지를 index를 전달해 보여주도록 함.
+    fun showNewsDetail(index: Int) {
+        _detailViewId.postValue(index)
     }
 
     private fun observeFinish() {

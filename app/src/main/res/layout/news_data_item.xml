@@ -22,7 +22,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="10dp"
-        android:background="#ffffff">
+        android:background="#ffffff"
+        android:transitionName="@string/item_transition_name">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

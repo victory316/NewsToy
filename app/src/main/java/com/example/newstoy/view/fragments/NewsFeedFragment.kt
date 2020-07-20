@@ -1,5 +1,6 @@
 package com.example.newstoy.view.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +14,8 @@ import com.example.newstoy.util.InjectorUtils
 import com.example.newstoy.view.NewsAdapter
 import com.example.newstoy.viewmodel.MainViewModel
 import androidx.lifecycle.observe
+import com.example.newstoy.util.Constants.REQUEST_ID
+import com.example.newstoy.view.DetailActivity
 import timber.log.Timber
 
 // TODO: Rename parameter arguments, choose names that match
@@ -48,7 +51,7 @@ class NewsFeedFragment : Fragment() {
         val layoutManager = LinearLayoutManager(requireActivity())
         val adapter = NewsAdapter(mainViewModel)
 
-        with (binding) {
+        with(binding) {
             allList.adapter = adapter
             allList.layoutManager = layoutManager
 
@@ -69,6 +72,14 @@ class NewsFeedFragment : Fragment() {
             Timber.tag("refreshTest").d("refresh finish")
 
             binding.refreshLayout.isRefreshing = false
+        }
+
+        mainViewModel.detailViewId.observe(viewLifecycleOwner) { clickedItemId ->
+
+            startActivity(
+                Intent(requireContext(), DetailActivity::class.java)
+                    .putExtra(REQUEST_ID, clickedItemId)
+            )
         }
     }
 

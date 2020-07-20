@@ -35,7 +35,7 @@ class NewsAdapter(private val mainViewModel: MainViewModel) :
 
     class ResultViewHolder(
         private val binding: NewsDataItemBinding,
-        private val answersViewModel: MainViewModel
+        private val mainViewModel: MainViewModel
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: NewsData) {
@@ -44,8 +44,21 @@ class NewsAdapter(private val mainViewModel: MainViewModel) :
             binding.apply {
 
                 newsTitle.text = item.title
+                imageUrl = item.urlToImage
+                contents = item.description
+                root.transitionName = "image_view"
 
                 executePendingBindings()
+
+                root.setOnClickListener {
+                    val viewList = listOf(
+                        Pair(binding.root, "image_view"),
+                        Pair(newsTitle, "title_string"),
+                        Pair(newsContent, "contents_string")
+                    )
+
+                    mainViewModel.showNewsDetail(item, viewList)
+                }
             }
         }
     }

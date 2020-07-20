@@ -2,6 +2,7 @@ package com.example.newstoy.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Window
 import androidx.fragment.app.Fragment
 import com.example.newstoy.R
 import com.example.newstoy.databinding.ActivityMainBinding
@@ -9,7 +10,9 @@ import com.example.newstoy.util.InjectorUtils
 import com.example.newstoy.view.fragments.FavoriteFragment
 import com.example.newstoy.view.fragments.NewsFeedFragment
 import com.example.newstoy.view.fragments.SearchFragment
+import com.example.newstoy.view.fragments.SettingsFragment
 import com.example.newstoy.viewmodel.MainViewModel
+import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
@@ -19,10 +22,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
 
+        setupMotion()
+
         setContentView(binding.root)
         setupFragment(NewsFeedFragment.newInstance("ho", "ha"), "page_1")
 
         setupNavMenu()
+    }
+
+    private fun setupMotion() {
+        window.requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
+        setExitSharedElementCallback(MaterialContainerTransformSharedElementCallback())
+        window.sharedElementsUseOverlay = false
     }
 
     private fun setupFragment(fragment: Fragment, tag: String) {
@@ -46,25 +57,32 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupNavMenu() {
         binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
+
             when (item.itemId) {
                 R.id.page_1 -> {
-//                    binding.bottomNavigation.removeBadge(R.id.page_1)
-//                    myNavViewModel.clearFirstCount()
                     setupFragment(NewsFeedFragment.newInstance("ho", "ha"), "page_1")
                 }
+
                 R.id.page_2 -> {
-//                    binding.bottomNavigation.removeBadge(R.id.page_2)
-//                    myNavViewModel.clearSecondCount()
                     setupFragment(SearchFragment.newInstance("ho", "ha"), "page_2")
                 }
+
                 R.id.page_3 -> {
-//                    binding.bottomNavigation.removeBadge(R.id.page_3)
-//                    myNavViewModel.clearThirdCount()
                     setupFragment(FavoriteFragment.newInstance("ho", "ha"), "page_3")
+                }
+
+                R.id.page_4 -> {
+                    setupFragment(SettingsFragment.newInstance("ho", "ha"), "page_4")
                 }
             }
 
             true
         }
+    }
+
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount == 1) finish()
+
+        super.onBackPressed()
     }
 }

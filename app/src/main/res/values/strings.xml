@@ -3,7 +3,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="item_transition_name">item_transtion_name</string>
+    <string name="item_transition_image">item_transition_image</string>
+    <string name="item_transition_text">item_transition_text</string>
+
     <string name="menu_1">News</string>
     <string name="menu_2">Search</string>
     <string name="menu_3">Favorite</string>
+    <string name="menu_4">Settings</string>
 </resources>

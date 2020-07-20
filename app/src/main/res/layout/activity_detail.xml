@@ -10,6 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:transitionName="@string/item_transition_name"
         tools:context=".view.DetailActivity">
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.newstoy.view.fragments
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -74,11 +75,18 @@ class NewsFeedFragment : Fragment() {
             binding.refreshLayout.isRefreshing = false
         }
 
-        mainViewModel.detailViewId.observe(viewLifecycleOwner) { clickedItemId ->
+        // Pair(A : id, B : View)
+        mainViewModel.detailViewId.observe(viewLifecycleOwner) { pair ->
+
+            val options = ActivityOptions.makeSceneTransitionAnimation(
+                requireActivity(),
+                pair.second,
+                "shared_element_container" // The transition name to be matched in Activity B.
+            )
 
             startActivity(
                 Intent(requireContext(), DetailActivity::class.java)
-                    .putExtra(REQUEST_ID, clickedItemId)
+                    .putExtra(REQUEST_ID, pair.first), options.toBundle()
             )
         }
     }

@@ -50,7 +50,7 @@ class NewsAdapter(private val mainViewModel: MainViewModel) :
                 executePendingBindings()
 
                 root.setOnClickListener {
-                    mainViewModel.showNewsDetail(item.index)
+                    mainViewModel.showNewsDetail(item.index, root)
                 }
             }
         }

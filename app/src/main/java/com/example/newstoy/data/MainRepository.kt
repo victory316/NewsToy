@@ -2,7 +2,6 @@ package com.example.newstoy.data
 
 import androidx.lifecycle.LiveData
 import com.example.newstoy.data.local.NewsData
-import com.example.newstoy.di.component.DaggerApiComponent
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
@@ -27,7 +26,7 @@ class MainRepository private constructor(private val dao: MainDao) {
     }
 
     fun doTestSearch() {
-        disposable = BasicClient().getApi().testQuery("kr", DaggerApiComponent.create().getApiKey())
+        disposable = BasicClient().getApi().testQuery("kr", API_KEY)
             .observeOn(Schedulers.computation())
             .subscribeOn(Schedulers.io())
             .subscribe(
@@ -50,6 +49,8 @@ class MainRepository private constructor(private val dao: MainDao) {
     }
 
     companion object {
+
+        const val API_KEY = "198e76f861e24d5cac3780e47b72115d"
 
         @Volatile
         private var instance: MainRepository? = null

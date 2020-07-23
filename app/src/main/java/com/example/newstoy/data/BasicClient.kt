@@ -1,6 +1,5 @@
 package com.example.newstoy.data
 
-import com.example.newstoy.di.component.DaggerApiComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory

@@ -1,7 +1,6 @@
 package com.example.newstoy
 
 import android.util.Log
-import com.example.newstoy.di.component.DaggerMyComponent
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -12,13 +11,10 @@ import org.junit.Assert.*
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 class ExampleUnitTest {
+
     @Test
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
     }
 
-    @Test
-    fun testHelloWorld() {
-        println(DaggerMyComponent.create().getString())
-    }
 }

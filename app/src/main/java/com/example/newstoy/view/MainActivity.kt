@@ -1,32 +1,31 @@
 package com.example.newstoy.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Window
 import androidx.fragment.app.Fragment
 import com.example.newstoy.R
 import com.example.newstoy.databinding.ActivityMainBinding
-import com.example.newstoy.util.InjectorUtils
 import com.example.newstoy.view.fragments.FavoriteFragment
 import com.example.newstoy.view.fragments.NewsFeedFragment
 import com.example.newstoy.view.fragments.SearchFragment
 import com.example.newstoy.view.fragments.SettingsFragment
-import com.example.newstoy.viewmodel.MainViewModel
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
+import dagger.android.support.DaggerAppCompatActivity
 import timber.log.Timber
+import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+class MainActivity : DaggerAppCompatActivity() {
+
+    @Inject
+    lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-
         setupMotion()
+        super.onCreate(savedInstanceState)
 
         setContentView(binding.root)
-        setupFragment(NewsFeedFragment.newInstance("ho", "ha"), "page_1")
 
+        setupFragment(NewsFeedFragment.newInstance("ho", "ha"), "page_1")
         setupNavMenu()
     }
 

@@ -1,12 +1,15 @@
-package com.example.newstoy.di.module
+package com.example.newstoy.di.module.activity
 
 import androidx.databinding.DataBindingUtil
 import com.example.newstoy.R
 import com.example.newstoy.databinding.ActivityMainBinding
 import com.example.newstoy.di.ActivityScope
 import com.example.newstoy.di.FragmentScope
+import com.example.newstoy.di.module.fragment.FavoriteFragmentModule
+import com.example.newstoy.di.module.fragment.NewsFeedFragmentModule
 import com.example.newstoy.view.MainActivity
 import com.example.newstoy.view.fragments.FavoriteFragment
+import com.example.newstoy.view.fragments.NewsFeedFragment
 import dagger.Module
 import dagger.Provides
 import dagger.android.ContributesAndroidInjector
@@ -29,9 +32,7 @@ abstract class MainActivityModule {
     @ContributesAndroidInjector(modules = [(FavoriteFragmentModule::class)])
     abstract fun getFavoriteFragment(): FavoriteFragment
 
-//
-//    @FragmentScope
-//    @ContributesAndroidInjector(modules = [(MainFragmentModule::class)])
-//    abstract fun getMainFragment(): MainFragment
-
+    @FragmentScope
+    @ContributesAndroidInjector(modules = [(NewsFeedFragmentModule::class)])
+    abstract fun getNewsFeedFragment(): NewsFeedFragment
 }

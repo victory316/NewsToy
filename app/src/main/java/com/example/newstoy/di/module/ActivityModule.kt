@@ -1,9 +1,8 @@
 package com.example.newstoy.di.module
 
 import com.example.newstoy.di.ActivityScope
-import com.example.newstoy.di.FragmentScope
+import com.example.newstoy.di.module.activity.MainActivityModule
 import com.example.newstoy.view.MainActivity
-import com.example.newstoy.view.fragments.FavoriteFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

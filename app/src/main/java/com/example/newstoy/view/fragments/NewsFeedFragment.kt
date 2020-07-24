@@ -20,7 +20,9 @@ import androidx.lifecycle.observe
 import com.example.newstoy.R
 import com.example.newstoy.util.Constants.REQUEST_ID
 import com.example.newstoy.view.DetailActivity
+import dagger.android.support.DaggerFragment
 import timber.log.Timber
+import javax.inject.Inject
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,7 +34,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [NewsFeedFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class NewsFeedFragment : Fragment() {
+class NewsFeedFragment : DaggerFragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -41,14 +43,29 @@ class NewsFeedFragment : Fragment() {
         InjectorUtils.provideMainViewModel(this)
     }
 
-    private lateinit var binding: FragmentNewsFeedBinding
+    @Inject
+    lateinit var binding: FragmentNewsFeedBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+//        binding = FragmentNewsFeedBinding.inflate(inflater, container, false)
+        setupUi()
+
+        mainViewModel.testSearch()
+
+        // Inflate the layout for this fragment
+        return binding.root
     }
 
     private fun setupUi() {
@@ -105,19 +122,6 @@ class NewsFeedFragment : Fragment() {
                     .putExtra(REQUEST_ID, pair.first.index), options.toBundle()
             )
         }
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentNewsFeedBinding.inflate(inflater, container, false)
-        setupUi()
-
-        mainViewModel.testSearch()
-
-        // Inflate the layout for this fragment
-        return binding.root
     }
 
     companion object {

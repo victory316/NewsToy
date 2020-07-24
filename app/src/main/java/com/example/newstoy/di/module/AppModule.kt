@@ -3,11 +3,17 @@ package com.example.newstoy.di.module
 import android.app.Application
 import android.content.Context
 import com.example.newstoy.App
+import com.example.newstoy.data.BasicApi
+import com.example.newstoy.data.BasicClient
 import dagger.Module
 import dagger.Provides
+import okhttp3.OkHttpClient
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
-@Module(includes = [ViewModelModule::class])
+@Module(includes = [ViewModelModule::class, RetrofitModule::class])
 class AppModule {
     @Provides
     @Singleton
@@ -19,6 +25,17 @@ class AppModule {
     @Singleton
     fun provideApplication(app: App): Application {
         return app
+    }
+
+    @Provides
+    @Singleton
+    fun provideRetrofit(): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .client(OkHttpClient())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
     }
 
 //    @Provides
@@ -67,4 +84,9 @@ class AppModule {
 //    fun providePhotoHelper(): PhotoHelper {
 //        return PhotoHelperImpl()
 //    }
+
+
+    companion object {
+        const val BASE_URL = "https://newsapi.org/v2/"
+    }
 }

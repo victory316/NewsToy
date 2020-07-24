@@ -21,6 +21,7 @@ abstract class MainActivityModule {
         fun provideMainActivityBinding(activity: MainActivity): ActivityMainBinding {
             return DataBindingUtil.setContentView(activity, R.layout.activity_main)
         }
+
     }
 
 //

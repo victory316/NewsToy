@@ -1,11 +1,13 @@
 package com.example.newstoy.data
 
+import androidx.annotation.NonNull
 import androidx.lifecycle.LiveData
 import com.example.newstoy.data.local.NewsData
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
 import timber.log.Timber
+import javax.inject.Inject
 
 /**
  *  메인 화면에서의 상호작용에 사용되는 repository
@@ -21,11 +23,35 @@ class MainRepository private constructor(private val dao: MainDao) {
     }
 
     fun getNewsList(): LiveData<List<NewsData>> {
-
         return dao.getNewsList()
     }
 
+    @Inject
+    @NonNull
+    lateinit var testApi: BasicApi
+
     fun doTestSearch() {
+//        disposable = testApi.testQuery("kr", API_KEY)
+//            .observeOn(Schedulers.computation())
+//            .subscribeOn(Schedulers.io())
+//            .subscribe(
+//                {
+//                    dao.deleteNews()
+//                    Timber.tag("queryTest").d("result : ${it}")
+//
+//                    dao.insertNewsTransaction(it.articles)
+//
+//                    it.articles.forEach { news ->
+//                        Timber.tag("queryTest").d("news : $news")
+//                    }
+//
+//                    queryFinish.onNext(true)
+//
+//                }, {
+//                    Timber.tag("queryTest").d("error! : $it")
+//                }
+//            )
+
         disposable = BasicClient().getApi().testQuery("kr", API_KEY)
             .observeOn(Schedulers.computation())
             .subscribeOn(Schedulers.io())

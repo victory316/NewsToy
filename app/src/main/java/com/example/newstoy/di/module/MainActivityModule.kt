@@ -6,6 +6,7 @@ import com.example.newstoy.databinding.ActivityMainBinding
 import com.example.newstoy.di.ActivityScope
 import com.example.newstoy.di.FragmentScope
 import com.example.newstoy.view.MainActivity
+import com.example.newstoy.view.fragments.FavoriteFragment
 import dagger.Module
 import dagger.Provides
 import dagger.android.ContributesAndroidInjector
@@ -23,6 +24,10 @@ abstract class MainActivityModule {
         }
 
     }
+
+    @FragmentScope
+    @ContributesAndroidInjector(modules = [(FavoriteFragmentModule::class)])
+    abstract fun getFavoriteFragment(): FavoriteFragment
 
 //
 //    @FragmentScope

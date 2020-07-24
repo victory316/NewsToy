@@ -15,3 +15,4 @@ Starting on 2020.07.16
 - [Material Design Motion](https://material.io/develop/android/theming/motion)
 - [Glide](https://github.com/bumptech/glide)
 - [Retrofit2](https://square.github.io/retrofit/)
+- [Dagger2](https://dagger.dev)

@@ -17,13 +17,14 @@ import javax.inject.Inject
  *  메 페이지와 상호작용하는 ViewModel class
  */
 class MainViewModel internal constructor(
-    private val repository: MainRepository,
-    private val savedStateHandle: SavedStateHandle
+    private val repository: MainRepository
 ) : ViewModel() {
 
-    val newsData: LiveData<List<NewsData>> = getSavedFavorite().switchMap {
-        repository.getNewsList()
-    }
+//    val newsData: LiveData<List<NewsData>> = getSavedFavorite().switchMap {
+//        repository.getNewsList()
+//    }
+
+    val newsData: LiveData<List<NewsData>> = repository.getNewsList()
 
     private val _refreshStatus = MutableLiveData<Boolean>()
     val refreshStatus: LiveData<Boolean>
@@ -33,7 +34,6 @@ class MainViewModel internal constructor(
     private val _detailViewData = MutableLiveData<Pair<NewsData, List<Pair<View, String>>>>()
     val detailViewData: LiveData<Pair<NewsData, List<Pair<View, String>>>>
         get() = _detailViewData
-
 
     private lateinit var disposable: Disposable
 
@@ -57,9 +57,9 @@ class MainViewModel internal constructor(
             }
     }
 
-    private fun getSavedFavorite(): MutableLiveData<Int> {
-        return savedStateHandle.getLiveData(FAVORITE_SAVED_STATE_KEY, NO_FAVORITE)
-    }
+//    private fun getSavedFavorite(): MutableLiveData<Int> {
+//        return savedStateHandle.getLiveData(FAVORITE_SAVED_STATE_KEY, NO_FAVORITE)
+//    }
 
     companion object {
         private const val NO_FAVORITE = -1

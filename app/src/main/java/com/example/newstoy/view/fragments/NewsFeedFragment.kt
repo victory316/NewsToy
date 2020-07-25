@@ -18,6 +18,7 @@ import com.example.newstoy.view.NewsAdapter
 import com.example.newstoy.viewmodel.MainViewModel
 import androidx.lifecycle.observe
 import com.example.newstoy.R
+import com.example.newstoy.data.MainRepository
 import com.example.newstoy.util.Constants.REQUEST_ID
 import com.example.newstoy.view.DetailActivity
 import dagger.android.support.DaggerFragment

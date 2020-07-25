@@ -5,6 +5,8 @@ import android.content.Context
 import com.example.newstoy.App
 import com.example.newstoy.data.BasicApi
 import com.example.newstoy.data.BasicClient
+import com.example.newstoy.data.MainDao
+import com.example.newstoy.data.MainRepository
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -36,6 +38,12 @@ class AppModule {
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideMainRepository(dao: MainDao): MainRepository {
+        return MainRepository.getInstance(dao)
     }
 
 //    @Provides

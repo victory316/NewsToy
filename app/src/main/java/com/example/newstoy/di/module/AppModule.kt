@@ -3,8 +3,6 @@ package com.example.newstoy.di.module
 import android.app.Application
 import android.content.Context
 import com.example.newstoy.App
-import com.example.newstoy.data.BasicApi
-import com.example.newstoy.data.BasicClient
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -13,7 +11,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
-@Module(includes = [ViewModelModule::class, RetrofitModule::class])
+@Module(includes = [ RetrofitModule::class])
 class AppModule {
     @Provides
     @Singleton
@@ -37,6 +35,12 @@ class AppModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
+
+//    @Provides
+//    @Singleton
+//    fun provideMainRepository(dao: MainDao): MainRepository {
+//        return MainRepository.getInstance(dao)
+//    }
 
 //    @Provides
 //    @Singleton

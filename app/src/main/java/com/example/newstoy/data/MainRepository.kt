@@ -52,13 +52,15 @@ class MainRepository private constructor(private val dao: MainDao) {
 //                }
 //            )
 
+//        Timber.tag("Retrofit").d("is injected? $testApi")
+
         disposable = BasicClient().getApi().testQuery("kr", API_KEY)
             .observeOn(Schedulers.computation())
             .subscribeOn(Schedulers.io())
             .subscribe(
                 {
                     dao.deleteNews()
-                    Timber.tag("queryTest").d("result : ${it}")
+                    Timber.tag("queryTest").d("result : $it")
 
                     dao.insertNewsTransaction(it.articles)
 

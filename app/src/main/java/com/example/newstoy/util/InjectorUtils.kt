@@ -1,7 +1,6 @@
 package com.example.newstoy.util
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.newstoy.data.MainDatabase
 import com.example.newstoy.data.MainRepository

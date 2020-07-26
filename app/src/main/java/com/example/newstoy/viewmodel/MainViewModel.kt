@@ -1,29 +1,23 @@
 package com.example.newstoy.viewmodel
 
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.lifecycle.*
-import com.example.newstoy.data.BasicApi
-import com.example.newstoy.data.MainRepository
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.example.newstoy.data.local.NewsData
 import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
-import timber.log.Timber
-import javax.inject.Inject
 
 
 /**
  *  메 페이지와 상호작용하는 ViewModel class
  */
-class MainViewModel internal constructor(
-    private val repository: MainRepository,
-    private val savedStateHandle: SavedStateHandle
-) : ViewModel() {
+class MainViewModel : ViewModel() {
 
-    val newsData: LiveData<List<NewsData>> = getSavedFavorite().switchMap {
-        repository.getNewsList()
-    }
+//    val newsData: LiveData<List<NewsData>> = getSavedFavorite().switchMap {
+//        repository.getNewsList()
+//    }
+
+//    val newsData: LiveData<List<NewsData>> = repository.getNewsList()
 
     private val _refreshStatus = MutableLiveData<Boolean>()
     val refreshStatus: LiveData<Boolean>
@@ -34,7 +28,6 @@ class MainViewModel internal constructor(
     val detailViewData: LiveData<Pair<NewsData, List<Pair<View, String>>>>
         get() = _detailViewData
 
-
     private lateinit var disposable: Disposable
 
     init {
@@ -42,7 +35,7 @@ class MainViewModel internal constructor(
     }
 
     fun testSearch() {
-        repository.doTestSearch()
+//        repository.doTestSearch()
     }
 
     // 상세 뉴스 페이지를 index를 전달해 보여주도록 함.
@@ -51,15 +44,15 @@ class MainViewModel internal constructor(
     }
 
     private fun observeFinish() {
-        disposable = repository.getQueryFininsh()
-            .subscribe {
-                _refreshStatus.postValue(it)
-            }
+//        disposable = repository.getQueryFininsh()
+//            .subscribe {
+//                _refreshStatus.postValue(it)
+//            }
     }
 
-    private fun getSavedFavorite(): MutableLiveData<Int> {
-        return savedStateHandle.getLiveData(FAVORITE_SAVED_STATE_KEY, NO_FAVORITE)
-    }
+//    private fun getSavedFavorite(): MutableLiveData<Int> {
+//        return savedStateHandle.getLiveData(FAVORITE_SAVED_STATE_KEY, NO_FAVORITE)
+//    }
 
     companion object {
         private const val NO_FAVORITE = -1

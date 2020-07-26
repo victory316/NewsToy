@@ -8,8 +8,8 @@ Starting on 2020.07.16
 - Search news and save to favorite
 
 ### Goal specifications
-- MVVM with Jetpack AAC **DONE**
-- DI with Dagger2 **DONE**
+- MVVM with Jetpack AAC **..DONE!**
+- DI with Dagger2 **..DONE!**
 - Unit Tesitng (Code coverage to 70%)
 - UI Testing
 

@@ -15,7 +15,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
-@Module(includes = [ViewModelModule::class, RetrofitModule::class])
+@Module(includes = [ RetrofitModule::class])
 class AppModule {
     @Provides
     @Singleton

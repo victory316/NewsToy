@@ -11,14 +11,17 @@ import com.example.newstoy.data.MainRepository
 import com.example.newstoy.databinding.FragmentFavoriteBinding
 import com.example.newstoy.databinding.FragmentNewsFeedBinding
 import com.example.newstoy.di.FragmentScope
+import com.example.newstoy.di.module.ViewModelKey
 import com.example.newstoy.view.MainActivity
 import com.example.newstoy.view.fragments.FavoriteFragment
 import com.example.newstoy.view.fragments.NewsFeedFragment
 import com.example.newstoy.viewmodel.MainViewModel
 import com.example.newstoy.viewmodel.MainViewModelFactory
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.android.ContributesAndroidInjector
+import dagger.multibindings.IntoMap
 
 @Module
 class NewsFeedFragmentModule {

@@ -1,6 +1,7 @@
 package com.example.newstoy.view.fragments
 
 import android.app.ActivityOptions
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,14 +12,17 @@ import android.view.ViewGroup
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.ContextCompat
 import androidx.core.util.Pair
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newstoy.databinding.FragmentNewsFeedBinding
 import com.example.newstoy.util.InjectorUtils
 import com.example.newstoy.view.NewsAdapter
 import com.example.newstoy.viewmodel.MainViewModel
 import androidx.lifecycle.observe
+import com.example.newstoy.App
 import com.example.newstoy.R
 import com.example.newstoy.data.MainRepository
+import com.example.newstoy.di.component.DaggerAppComponent
 import com.example.newstoy.util.Constants.REQUEST_ID
 import com.example.newstoy.view.DetailActivity
 import dagger.android.support.DaggerFragment
@@ -40,8 +44,19 @@ class NewsFeedFragment : DaggerFragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+//    @Inject
+//    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+//    private val mainViewModel by viewModels<MainViewModel> { viewModelFactory }
+
     private val mainViewModel: MainViewModel by viewModels {
         InjectorUtils.provideMainViewModel(this)
+    }
+
+    override fun onAttach(context: Context) {
+
+
+        super.onAttach(context)
     }
 
     @Inject
@@ -55,6 +70,8 @@ class NewsFeedFragment : DaggerFragment() {
             param2 = it.getString(ARG_PARAM2)
         }
     }
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

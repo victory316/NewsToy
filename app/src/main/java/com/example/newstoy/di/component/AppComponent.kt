@@ -3,10 +3,7 @@ package com.example.newstoy.di.component
 import android.content.Context
 import com.example.newstoy.App
 import com.example.newstoy.data.MainRepository
-import com.example.newstoy.di.module.ActivityModule
-import com.example.newstoy.di.module.AppModule
-import com.example.newstoy.di.module.AppModuleBinds
-import com.example.newstoy.di.module.ViewModelBuilderModule
+import com.example.newstoy.di.module.*
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
@@ -30,7 +27,7 @@ interface AppComponent : AndroidInjector<App> {
     @Component.Builder
     abstract class Builder : AndroidInjector.Builder<App>()
 
-//    fun mainComponent(): MainComponent.Factory
+    fun mainComponent(): MainComponent.Factory
 }
 
 

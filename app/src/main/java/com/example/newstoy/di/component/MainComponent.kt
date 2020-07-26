@@ -13,5 +13,5 @@ interface MainComponent {
         fun create(): MainComponent
     }
 
-    fun inject(fragment: NewsFeedFragment)
+//    fun inject(fragment: NewsFeedFragment)
 }

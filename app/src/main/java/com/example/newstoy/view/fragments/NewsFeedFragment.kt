@@ -53,12 +53,6 @@ class NewsFeedFragment : DaggerFragment() {
         InjectorUtils.provideMainViewModel(this)
     }
 
-    override fun onAttach(context: Context) {
-
-
-        super.onAttach(context)
-    }
-
     @Inject
     lateinit var binding: FragmentNewsFeedBinding
 

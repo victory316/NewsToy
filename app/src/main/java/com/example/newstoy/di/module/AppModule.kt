@@ -3,6 +3,9 @@ package com.example.newstoy.di.module
 import android.app.Application
 import android.content.Context
 import com.example.newstoy.App
+import com.example.newstoy.data.MainDao
+import com.example.newstoy.data.MainDatabase
+import com.example.newstoy.data.MainRepository
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -11,7 +14,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
-@Module(includes = [ RetrofitModule::class])
+@Module(includes = [RetrofitModule::class])
 class AppModule {
     @Provides
     @Singleton
@@ -36,11 +39,18 @@ class AppModule {
             .build()
     }
 
-//    @Provides
-//    @Singleton
-//    fun provideMainRepository(dao: MainDao): MainRepository {
-//        return MainRepository.getInstance(dao)
-//    }
+    @Provides
+    @Singleton
+    fun provideMainDao(context: Context): MainDao {
+        return MainDatabase.getInstance(context.applicationContext)!!.getMainDao()
+    }
+
+
+    @Provides
+    @Singleton
+    fun provideMainRepository(dao: MainDao): MainRepository {
+        return MainRepository.getInstance(dao)
+    }
 
 //    @Provides
 //    @Singleton

@@ -1,23 +1,30 @@
 package com.example.newstoy.viewmodel
 
 import android.view.View
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.lifecycle.*
+import com.example.newstoy.data.BasicApi
+import com.example.newstoy.data.MainRepository
 import com.example.newstoy.data.local.NewsData
 import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
+import javax.inject.Inject
 
 
 /**
  *  메 페이지와 상호작용하는 ViewModel class
  */
-class MainViewModel : ViewModel() {
+class MainViewModel @Inject constructor(
+    private val repository: MainRepository
+) : ViewModel() {
 
 //    val newsData: LiveData<List<NewsData>> = getSavedFavorite().switchMap {
 //        repository.getNewsList()
 //    }
 
-//    val newsData: LiveData<List<NewsData>> = repository.getNewsList()
+    val newsData: LiveData<List<NewsData>> = repository.getNewsList()
 
     private val _refreshStatus = MutableLiveData<Boolean>()
     val refreshStatus: LiveData<Boolean>
@@ -35,7 +42,7 @@ class MainViewModel : ViewModel() {
     }
 
     fun testSearch() {
-//        repository.doTestSearch()
+        repository.doTestSearch()
     }
 
     // 상세 뉴스 페이지를 index를 전달해 보여주도록 함.
@@ -44,10 +51,10 @@ class MainViewModel : ViewModel() {
     }
 
     private fun observeFinish() {
-//        disposable = repository.getQueryFininsh()
-//            .subscribe {
-//                _refreshStatus.postValue(it)
-//            }
+        disposable = repository.getQueryFininsh()
+            .subscribe {
+                _refreshStatus.postValue(it)
+            }
     }
 
 //    private fun getSavedFavorite(): MutableLiveData<Int> {

@@ -1,29 +1,21 @@
 package com.example.newstoy.view.fragments
 
-import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import androidx.fragment.app.viewModels
 import android.view.ViewGroup
 import androidx.core.app.ActivityOptionsCompat
-import androidx.core.content.ContextCompat
 import androidx.core.util.Pair
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newstoy.databinding.FragmentNewsFeedBinding
-import com.example.newstoy.util.InjectorUtils
-import com.example.newstoy.view.NewsAdapter
-import com.example.newstoy.viewmodel.MainViewModel
-import androidx.lifecycle.observe
-import com.example.newstoy.App
-import com.example.newstoy.R
-import com.example.newstoy.data.MainRepository
 import com.example.newstoy.util.Constants.REQUEST_ID
 import com.example.newstoy.view.DetailActivity
+import com.example.newstoy.view.NewsAdapter
+import com.example.newstoy.viewmodel.MainViewModel
 import dagger.android.support.DaggerFragment
 import timber.log.Timber
 import javax.inject.Inject
@@ -54,11 +46,6 @@ class NewsFeedFragment : DaggerFragment() {
 
     @Inject
     lateinit var binding: FragmentNewsFeedBinding
-
-    override fun onAttach(context: Context) {
-
-        super.onAttach(context)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -118,7 +105,7 @@ class NewsFeedFragment : DaggerFragment() {
             val titlePair = Pair(pair.second[1].first, pair.second[1].second)
             val contentsPair = Pair(pair.second[2].first, pair.second[2].second)
 
-            Timber.tag("pairTest").d("${imagePair}")
+            Timber.tag("pairTest").d("$imagePair")
 
 //            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
 //                requireActivity(),

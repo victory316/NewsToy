@@ -5,10 +5,8 @@ import com.example.newstoy.R
 import com.example.newstoy.databinding.FragmentFavoriteBinding
 import com.example.newstoy.di.FragmentScope
 import com.example.newstoy.view.MainActivity
-import com.example.newstoy.view.fragments.FavoriteFragment
 import dagger.Module
 import dagger.Provides
-import dagger.android.ContributesAndroidInjector
 
 @Module
 class FavoriteFragmentModule {

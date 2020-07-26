@@ -1,14 +1,9 @@
 package com.example.newstoy.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Window
-import androidx.interpolator.view.animation.FastOutSlowInInterpolator
-import com.example.newstoy.R
+import androidx.appcompat.app.AppCompatActivity
 import com.example.newstoy.databinding.ActivityDetailBinding
-import com.example.newstoy.databinding.ActivityMainBinding
-import com.google.android.material.transition.Hold
-import com.google.android.material.transition.platform.MaterialArcMotion
 import com.google.android.material.transition.platform.MaterialContainerTransform
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
 

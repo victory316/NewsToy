@@ -3,10 +3,6 @@ package com.example.newstoy.di.module
 import android.app.Application
 import android.content.Context
 import com.example.newstoy.App
-import com.example.newstoy.data.BasicApi
-import com.example.newstoy.data.BasicClient
-import com.example.newstoy.data.MainDao
-import com.example.newstoy.data.MainRepository
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient

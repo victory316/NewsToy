@@ -38,12 +38,6 @@ class NewsFeedFragment : DaggerFragment() {
     @Inject
     lateinit var mainViewModel: MainViewModel
 
-//    private val mainViewModel by viewModels<MainViewModel> { viewModelFactory }
-//
-//    private val mainViewModel: MainViewModel by viewModels {
-//        InjectorUtils.provideMainViewModel(this)
-//    }
-
     @Inject
     lateinit var binding: FragmentNewsFeedBinding
 
@@ -62,12 +56,10 @@ class NewsFeedFragment : DaggerFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//        binding = FragmentNewsFeedBinding.inflate(inflater, container, false)
         setupUi()
 
         mainViewModel.testSearch()
 
-        // Inflate the layout for this fragment
         return binding.root
     }
 
@@ -84,13 +76,13 @@ class NewsFeedFragment : DaggerFragment() {
             }
         }
 
-//        mainViewModel.newsData.observe(viewLifecycleOwner) {
-//            it.forEach { news ->
-//                Timber.tag("newsTest").d("adding : $news")
-//            }
-//
-//            adapter.submitList(it)
-//        }
+        mainViewModel.newsData.observe(viewLifecycleOwner) {
+            it.forEach { news ->
+                Timber.tag("newsTest").d("adding : $news")
+            }
+
+            adapter.submitList(it)
+        }
 
         mainViewModel.refreshStatus.observe(viewLifecycleOwner) {
             Timber.tag("refreshTest").d("refresh finish")

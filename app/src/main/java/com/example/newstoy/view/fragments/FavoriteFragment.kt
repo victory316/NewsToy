@@ -24,7 +24,6 @@ class FavoriteFragment : DaggerFragment() {
     private var param1: String? = null
     private var param2: String? = null
 
-    // private lateinit var binding: FragmentFavoriteBinding
     @Inject
     lateinit var binding: FragmentFavoriteBinding
 
@@ -41,9 +40,7 @@ class FavoriteFragment : DaggerFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//        binding = FragmentFavoriteBinding.inflate(inflater, container, false)
 
-        // Inflate the layout for this fragment
         return binding.root
     }
 

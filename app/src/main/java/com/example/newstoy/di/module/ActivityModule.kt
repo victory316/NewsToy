@@ -12,8 +12,4 @@ abstract class ActivityModule {
     @ActivityScope
     @ContributesAndroidInjector(modules = [(MainActivityModule::class)])
     abstract fun getMainActivity(): MainActivity
-
-//    @FragmentScope
-//    @ContributesAndroidInjector(modules = [(FavoriteFragmentModule::class)])
-//    abstract fun getFavoriteFragment(): FavoriteFragment
 }

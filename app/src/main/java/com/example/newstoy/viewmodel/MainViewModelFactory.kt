@@ -19,6 +19,6 @@ class MainViewModelFactory(
         modelClass: Class<T>,
         handle: SavedStateHandle
     ): T {
-        return MainViewModel(repository) as T
+        return MainViewModel() as T
     }
 }

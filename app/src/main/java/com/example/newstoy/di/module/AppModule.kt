@@ -40,11 +40,11 @@ class AppModule {
             .build()
     }
 
-    @Provides
-    @Singleton
-    fun provideMainRepository(dao: MainDao): MainRepository {
-        return MainRepository.getInstance(dao)
-    }
+//    @Provides
+//    @Singleton
+//    fun provideMainRepository(dao: MainDao): MainRepository {
+//        return MainRepository.getInstance(dao)
+//    }
 
 //    @Provides
 //    @Singleton

@@ -16,15 +16,13 @@ import javax.inject.Inject
 /**
  *  메 페이지와 상호작용하는 ViewModel class
  */
-class MainViewModel internal constructor(
-    private val repository: MainRepository
-) : ViewModel() {
+class MainViewModel : ViewModel() {
 
 //    val newsData: LiveData<List<NewsData>> = getSavedFavorite().switchMap {
 //        repository.getNewsList()
 //    }
 
-    val newsData: LiveData<List<NewsData>> = repository.getNewsList()
+//    val newsData: LiveData<List<NewsData>> = repository.getNewsList()
 
     private val _refreshStatus = MutableLiveData<Boolean>()
     val refreshStatus: LiveData<Boolean>
@@ -42,7 +40,7 @@ class MainViewModel internal constructor(
     }
 
     fun testSearch() {
-        repository.doTestSearch()
+//        repository.doTestSearch()
     }
 
     // 상세 뉴스 페이지를 index를 전달해 보여주도록 함.
@@ -51,10 +49,10 @@ class MainViewModel internal constructor(
     }
 
     private fun observeFinish() {
-        disposable = repository.getQueryFininsh()
-            .subscribe {
-                _refreshStatus.postValue(it)
-            }
+//        disposable = repository.getQueryFininsh()
+//            .subscribe {
+//                _refreshStatus.postValue(it)
+//            }
     }
 
 //    private fun getSavedFavorite(): MutableLiveData<Int> {

@@ -1,5 +1,6 @@
 package com.example.newstoy.di.component
 
+import android.app.Application
 import android.content.Context
 import com.example.newstoy.App
 import com.example.newstoy.data.MainRepository
@@ -16,10 +17,7 @@ import javax.inject.Singleton
     modules = [
         AndroidSupportInjectionModule::class,
         ActivityModule::class,
-        AppModule::class,
-        AppModuleBinds::class,
-        ViewModelBuilderModule::class,
-        SubcomponentsModule::class
+        AppModule::class
     ]
 )
 interface AppComponent : AndroidInjector<App> {
@@ -27,13 +25,15 @@ interface AppComponent : AndroidInjector<App> {
     @Component.Builder
     abstract class Builder : AndroidInjector.Builder<App>()
 
-    fun mainComponent(): MainComponent.Factory
+//    fun mainComponent(): MainComponent.Factory
+//
+//    fun injectApp(app: App)
 }
 
 
-@Module(
-    subcomponents = [
-        MainComponent::class
-    ]
-)
-object SubcomponentsModule
+//@Module(
+//    subcomponents = [
+//        MainComponent::class
+//    ]
+//)
+//object SubcomponentsModule

@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.example.newstoy.R
 import com.example.newstoy.data.BasicApi
+import com.example.newstoy.data.MainDao
 import com.example.newstoy.data.MainRepository
 import com.example.newstoy.databinding.FragmentFavoriteBinding
 import com.example.newstoy.databinding.FragmentNewsFeedBinding
@@ -35,4 +36,14 @@ class NewsFeedFragmentModule {
             null,
             false
         )
+
+
+    @Provides
+    @FragmentScope
+    fun provideMainViewModel(fragment: NewsFeedFragment): MainViewModel =
+        ViewModelProviders.of(fragment, object : ViewModelProvider.Factory {
+            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+                return MainViewModel() as T
+            }
+        }).get(MainViewModel::class.java)
 }

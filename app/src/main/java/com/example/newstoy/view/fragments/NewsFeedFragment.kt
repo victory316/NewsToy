@@ -22,7 +22,6 @@ import androidx.lifecycle.observe
 import com.example.newstoy.App
 import com.example.newstoy.R
 import com.example.newstoy.data.MainRepository
-import com.example.newstoy.di.component.DaggerAppComponent
 import com.example.newstoy.util.Constants.REQUEST_ID
 import com.example.newstoy.view.DetailActivity
 import dagger.android.support.DaggerFragment
@@ -44,17 +43,22 @@ class NewsFeedFragment : DaggerFragment() {
     private var param1: String? = null
     private var param2: String? = null
 
-//    @Inject
-//    lateinit var viewModelFactory: ViewModelProvider.Factory
+    @Inject
+    lateinit var mainViewModel: MainViewModel
 
 //    private val mainViewModel by viewModels<MainViewModel> { viewModelFactory }
-
-    private val mainViewModel: MainViewModel by viewModels {
-        InjectorUtils.provideMainViewModel(this)
-    }
+//
+//    private val mainViewModel: MainViewModel by viewModels {
+//        InjectorUtils.provideMainViewModel(this)
+//    }
 
     @Inject
     lateinit var binding: FragmentNewsFeedBinding
+
+    override fun onAttach(context: Context) {
+
+        super.onAttach(context)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,13 +97,13 @@ class NewsFeedFragment : DaggerFragment() {
             }
         }
 
-        mainViewModel.newsData.observe(viewLifecycleOwner) {
-            it.forEach { news ->
-                Timber.tag("newsTest").d("adding : $news")
-            }
-
-            adapter.submitList(it)
-        }
+//        mainViewModel.newsData.observe(viewLifecycleOwner) {
+//            it.forEach { news ->
+//                Timber.tag("newsTest").d("adding : $news")
+//            }
+//
+//            adapter.submitList(it)
+//        }
 
         mainViewModel.refreshStatus.observe(viewLifecycleOwner) {
             Timber.tag("refreshTest").d("refresh finish")

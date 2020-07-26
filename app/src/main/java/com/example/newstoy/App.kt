@@ -1,26 +1,22 @@
 package com.example.newstoy
 
+import android.app.Activity
 import android.app.Application
 import android.content.Context
 import com.example.newstoy.di.component.AppComponent
 import com.example.newstoy.di.component.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasAndroidInjector
 import timber.log.Timber
+import javax.inject.Inject
 
 class App : DaggerApplication() {
 
-    // Instance of the AppComponent that will be used by all the Activities in the project
-//    val appComponent: AppComponent by lazy {
-//        initializeComponent()
-//    }
-//
-//    open fun initializeComponent(): AppComponent {
-//        // Creates an instance of AppComponent using its Factory constructor
-//        // We pass the applicationContext that will be used as Context in the graph
-//        return DaggerAppComponent.factory().create(applicationContext)
-//    }
 
+//    @Inject
+//    lateinit var dispatchingActivityInjector: DispatchingAndroidInjector<Activity>
 
     override fun onCreate() {
 
@@ -29,8 +25,10 @@ class App : DaggerApplication() {
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
-    }
 
+
+//        DaggerAppComponent.builder().build().inject(this)
+    }
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
         return DaggerAppComponent.builder().create(this)

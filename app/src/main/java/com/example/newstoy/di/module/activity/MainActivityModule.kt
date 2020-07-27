@@ -8,10 +8,12 @@ import com.example.newstoy.di.FragmentScope
 import com.example.newstoy.di.module.fragment.FavoriteFragmentModule
 import com.example.newstoy.di.module.fragment.NewsFeedFragmentModule
 import com.example.newstoy.di.module.fragment.SearchFragmentModule
+import com.example.newstoy.di.module.fragment.SettingsFragmentModule
 import com.example.newstoy.view.MainActivity
 import com.example.newstoy.view.fragments.FavoriteFragment
 import com.example.newstoy.view.fragments.NewsFeedFragment
 import com.example.newstoy.view.fragments.SearchFragment
+import com.example.newstoy.view.fragments.SettingsFragment
 import dagger.Module
 import dagger.Provides
 import dagger.android.ContributesAndroidInjector
@@ -31,14 +33,18 @@ abstract class MainActivityModule {
     }
 
     @FragmentScope
-    @ContributesAndroidInjector(modules = [(FavoriteFragmentModule::class)])
+    @ContributesAndroidInjector(modules = [FavoriteFragmentModule::class])
     abstract fun getFavoriteFragment(): FavoriteFragment
 
     @FragmentScope
-    @ContributesAndroidInjector(modules = [(NewsFeedFragmentModule::class)])
+    @ContributesAndroidInjector(modules = [NewsFeedFragmentModule::class])
     abstract fun getNewsFeedFragment(): NewsFeedFragment
 
     @FragmentScope
-    @ContributesAndroidInjector(modules = [(SearchFragmentModule::class)])
+    @ContributesAndroidInjector(modules = [SearchFragmentModule::class])
     abstract fun getSearchFragment(): SearchFragment
+
+    @FragmentScope
+    @ContributesAndroidInjector(modules = [SettingsFragmentModule::class])
+    abstract fun getSettingsFragment(): SettingsFragment
 }

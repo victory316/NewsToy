@@ -20,6 +20,8 @@ class MainViewModel @Inject constructor(
     private val repository: MainRepository
 ) : ViewModel() {
 
+    private lateinit var disposable: Disposable
+
     val newsData: LiveData<List<NewsData>> = repository.getNewsList()
 
     private val _refreshStatus = MutableLiveData<Boolean>()
@@ -31,7 +33,13 @@ class MainViewModel @Inject constructor(
     val detailViewData: LiveData<Pair<NewsData, List<Pair<View, String>>>>
         get() = _detailViewData
 
-    private lateinit var disposable: Disposable
+    private val _showInfoData = MutableLiveData<Boolean>()
+    val showInfoData: LiveData<Boolean>
+        get() = _showInfoData
+
+    private val _resetData = MutableLiveData<Boolean>()
+    val resetData: LiveData<Boolean>
+        get() = _resetData
 
     init {
         observeFinish()
@@ -51,5 +59,13 @@ class MainViewModel @Inject constructor(
             .subscribe {
                 _refreshStatus.postValue(it)
             }
+    }
+
+    fun showInformationPage() {
+        _showInfoData.postValue(true)
+    }
+
+    fun showResetDialog() {
+        _resetData.postValue(true)
     }
 }

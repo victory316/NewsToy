@@ -1,12 +1,16 @@
 package com.example.newstoy.view.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.newstoy.R
+import androidx.lifecycle.observe
 import com.example.newstoy.databinding.FragmentSettingsBinding
+import com.example.newstoy.view.SettingsActivity
+import com.example.newstoy.viewmodel.MainViewModel
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
@@ -28,6 +32,9 @@ class SettingsFragment : DaggerFragment() {
     @Inject
     lateinit var binding: FragmentSettingsBinding
 
+    @Inject
+    lateinit var mainViewModel: MainViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -40,6 +47,14 @@ class SettingsFragment : DaggerFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        with(binding) {
+            viewModel = mainViewModel
+        }
+
+        mainViewModel.showInfoData.observe(viewLifecycleOwner) {
+            startActivity(Intent(requireContext(), SettingsActivity::class.java))
+        }
 
         return binding.root
     }

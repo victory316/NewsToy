@@ -3,6 +3,7 @@ package com.example.newstoy.view
 import android.os.Bundle
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.observe
 import com.example.newstoy.databinding.ActivityDetailBinding
 import com.example.newstoy.util.Constants.REQUEST_ID
 import com.example.newstoy.viewmodel.DetailViewModel
@@ -22,16 +23,24 @@ class DetailActivity : DaggerAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        binding = ActivityDetailBinding.inflate(layoutInflater)
 
         setupMotion()
+        setupViewModel()
         setupView()
 
         setContentView(binding.root)
     }
 
+    private fun setupViewModel() {
+        binding.viewModel = mainViewModel
+
+        with(binding) {
+            viewModel = mainViewModel
+            lifecycleOwner = this@DetailActivity
+        }
+    }
+
     private fun setupMotion() {
-        window.requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
 
         setExitSharedElementCallback(MaterialContainerTransformSharedElementCallback())
         setEnterSharedElementCallback(MaterialContainerTransformSharedElementCallback())
@@ -56,5 +65,9 @@ class DetailActivity : DaggerAppCompatActivity() {
         Timber.tag("intent").d("${intent.getIntExtra(REQUEST_ID, 0)}")
 
         mainViewModel.loadNewsWithId(intent.getIntExtra(REQUEST_ID, 0))
+
+        mainViewModel.detailData!!.observe(this) {
+            Timber.tag("detailTest").d("loading : $it")
+        }
     }
 }

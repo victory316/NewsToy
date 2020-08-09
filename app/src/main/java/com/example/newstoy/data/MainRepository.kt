@@ -28,6 +28,9 @@ class MainRepository
     }
 
     fun getNewsWithId(id: Int): LiveData<NewsData> {
+
+        Timber.tag("loading").d(" ${dao.getNewsWithId(id).value}")
+
         return dao.getNewsWithId(id)
     }
 
@@ -37,7 +40,7 @@ class MainRepository
             .subscribeOn(Schedulers.io())
             .subscribe(
                 {
-                    dao.deleteNews()
+//                    dao.deleteNews()
                     Timber.tag("queryTest").d("result : ${it}")
 
                     dao.insertNewsTransaction(it.articles)

@@ -20,12 +20,9 @@ class DetailViewModel @Inject constructor(
     private val repository: MainRepository
 ) : ViewModel() {
 
-    private var detailData: LiveData<NewsData>? = null
+    var detailData: LiveData<NewsData>? = null
 
     fun loadNewsWithId(id: Int) {
         detailData = repository.getNewsWithId(id)
-
-        Timber.tag("test").d("id : $id | data : ${detailData!!.value}")
     }
-
 }

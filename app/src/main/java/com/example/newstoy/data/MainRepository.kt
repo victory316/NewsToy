@@ -27,8 +27,9 @@ class MainRepository
         return dao.getNewsList()
     }
 
-//    @Inject
-//    lateinit var testApi: BasicApi
+    fun getNewsWithId(id: Int): LiveData<NewsData> {
+        return dao.getNewsWithId(id)
+    }
 
     fun doTestSearch() {
         disposable = testApi.testQuery("kr", API_KEY)
@@ -51,29 +52,6 @@ class MainRepository
                     Timber.tag("queryTest").d("error! : $it")
                 }
             )
-
-//        Timber.tag("Retrofit").d("is injected? $testApi")
-
-//        disposable = BasicClient().getApi().testQuery("kr", API_KEY)
-//            .observeOn(Schedulers.computation())
-//            .subscribeOn(Schedulers.io())
-//            .subscribe(
-//                {
-//                    dao.deleteNews()
-//                    Timber.tag("queryTest").d("result : $it")
-//
-//                    dao.insertNewsTransaction(it.articles)
-//
-//                    it.articles.forEach { news ->
-//                        Timber.tag("queryTest").d("news : $news")
-//                    }
-//
-//                    queryFinish.onNext(true)
-//
-//                }, {
-//                    Timber.tag("queryTest").d("error! : $it")
-//                }
-//            )
     }
 
     companion object {

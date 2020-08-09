@@ -23,4 +23,7 @@ interface MainDao {
 
     @Query("DELETE FROM news_data")
     fun deleteNews()
+
+    @Query("SELECT * FROM news_data WHERE :id == `index`")
+    fun getNewsWithId(id: Int): LiveData<NewsData>
 }

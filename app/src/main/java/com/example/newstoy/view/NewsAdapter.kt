@@ -20,8 +20,6 @@ class NewsAdapter(private val mainViewModel: MainViewModel) :
             LayoutInflater.from(parent.context), parent, false
         )
 
-//        binding.viewModel = answersViewModel
-
         return ResultViewHolder(
             binding, mainViewModel
         )

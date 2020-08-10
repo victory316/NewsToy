@@ -1,17 +1,9 @@
 package com.example.newstoy.viewmodel
 
-import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.lifecycle.*
-import com.example.newstoy.data.BasicApi
 import com.example.newstoy.data.MainRepository
 import com.example.newstoy.data.local.NewsData
-import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
-import timber.log.Timber
 import javax.inject.Inject
-
 
 /**
  *  상세 화면을 보여주기 위한 ViewModel

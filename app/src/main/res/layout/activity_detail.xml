@@ -23,7 +23,7 @@
 
             <ImageView
                 android:id="@+id/detail_image_view"
-                setImageWithGlide="@{viewModel.detailData.url}"
+                setImageWithGlide="@{viewModel.detailData.urlToImage}"
                 android:layout_width="0dp"
                 android:layout_height="300dp"
                 android:transitionName="image_view"
@@ -33,12 +33,12 @@
 
             <TextView
                 android:id="@+id/detail_text_view"
+                style="@style/MaterialAlertDialog.MaterialComponents.Title.Text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
-                android:text="@{viewModel.detailData.description}"
+                android:text="@{viewModel.detailData.title}"
                 android:transitionName="content_string"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/detail_image_view" />
@@ -48,7 +48,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
-                android:text="@{viewModel.detailData.content}"
+                android:text="@{viewModel.detailData.description}"
                 android:transitionName="content_string"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"

@@ -97,20 +97,10 @@ class NewsFeedFragment : DaggerFragment() {
 
             Timber.tag("pairTest").d("$imagePair")
 
-//            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-//                requireActivity(),
-//                imagePair,
-//                titlePair,
-//                contentsPair
-//            )
-
-
             val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
                 requireActivity(),
                 imagePair.first!!, imagePair.second!!
             )
-
-
 
             startActivity(
                 Intent(requireContext(), DetailActivity::class.java)

@@ -110,6 +110,8 @@ class NewsFeedFragment : DaggerFragment() {
                 imagePair.first!!, imagePair.second!!
             )
 
+
+
             startActivity(
                 Intent(requireContext(), DetailActivity::class.java)
                     .putExtra(REQUEST_ID, pair.first.index), options.toBundle()

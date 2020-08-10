@@ -32,7 +32,7 @@ class MainActivity : DaggerAppCompatActivity() {
     private fun setupMotion() {
         window.requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
         setExitSharedElementCallback(MaterialContainerTransformSharedElementCallback())
-        window.sharedElementsUseOverlay = false
+//        window.sharedElementsUseOverlay = false
     }
 
     private fun setupFragment(fragment: Fragment, tag: String) {

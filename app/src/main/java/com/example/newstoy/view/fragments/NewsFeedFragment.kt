@@ -50,8 +50,6 @@ class NewsFeedFragment : DaggerFragment() {
         }
     }
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -98,14 +96,6 @@ class NewsFeedFragment : DaggerFragment() {
             val contentsPair = Pair(pair.second[2].first, pair.second[2].second)
 
             Timber.tag("pairTest").d("$imagePair")
-
-//            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-//                requireActivity(),
-//                imagePair,
-//                titlePair,
-//                contentsPair
-//            )
-
 
             val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
                 requireActivity(),

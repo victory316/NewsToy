@@ -12,7 +12,8 @@ import javax.inject.Inject
 /**
  *  메인 화면에서의 상호작용에 사용되는 repository
  */
-class MainRepository private constructor(private val dao: MainDao) {
+class MainRepository
+@Inject constructor(private val dao: MainDao, private val testApi: BasicApi) {
 
     private lateinit var disposable: Disposable
 
@@ -26,41 +27,21 @@ class MainRepository private constructor(private val dao: MainDao) {
         return dao.getNewsList()
     }
 
-    @Inject
-    @NonNull
-    lateinit var testApi: BasicApi
+    fun getNewsWithId(id: Int): LiveData<NewsData> {
+
+        Timber.tag("loading").d(" ${dao.getNewsWithId(id).value}")
+
+        return dao.getNewsWithId(id)
+    }
 
     fun doTestSearch() {
-//        disposable = testApi.testQuery("kr", API_KEY)
-//            .observeOn(Schedulers.computation())
-//            .subscribeOn(Schedulers.io())
-//            .subscribe(
-//                {
-//                    dao.deleteNews()
-//                    Timber.tag("queryTest").d("result : ${it}")
-//
-//                    dao.insertNewsTransaction(it.articles)
-//
-//                    it.articles.forEach { news ->
-//                        Timber.tag("queryTest").d("news : $news")
-//                    }
-//
-//                    queryFinish.onNext(true)
-//
-//                }, {
-//                    Timber.tag("queryTest").d("error! : $it")
-//                }
-//            )
-
-//        Timber.tag("Retrofit").d("is injected? $testApi")
-
-        disposable = BasicClient().getApi().testQuery("kr", API_KEY)
+        disposable = testApi.testQuery("kr", API_KEY)
             .observeOn(Schedulers.computation())
             .subscribeOn(Schedulers.io())
             .subscribe(
                 {
-                    dao.deleteNews()
-                    Timber.tag("queryTest").d("result : $it")
+//                    dao.deleteNews()
+                    Timber.tag("queryTest").d("result : ${it}")
 
                     dao.insertNewsTransaction(it.articles)
 
@@ -83,9 +64,9 @@ class MainRepository private constructor(private val dao: MainDao) {
         @Volatile
         private var instance: MainRepository? = null
 
-        fun getInstance(dao: MainDao) =
+        fun getInstance(dao: MainDao, api: BasicApi) =
             instance ?: synchronized(this) {
-                instance ?: MainRepository(dao).also { instance = it }
+                instance ?: MainRepository(dao, api).also { instance = it }
             }
     }
 }

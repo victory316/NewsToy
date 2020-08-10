@@ -3,6 +3,7 @@ package com.example.newstoy.di.module
 import android.app.Application
 import android.content.Context
 import com.example.newstoy.App
+import com.example.newstoy.data.BasicApi
 import com.example.newstoy.data.MainDao
 import com.example.newstoy.data.MainDatabase
 import com.example.newstoy.data.MainRepository
@@ -48,8 +49,8 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideMainRepository(dao: MainDao): MainRepository {
-        return MainRepository.getInstance(dao)
+    fun provideMainRepository(dao: MainDao, api: BasicApi): MainRepository {
+        return MainRepository.getInstance(dao, api)
     }
 
 //    @Provides
@@ -98,7 +99,6 @@ class AppModule {
 //    fun providePhotoHelper(): PhotoHelper {
 //        return PhotoHelperImpl()
 //    }
-
 
     companion object {
         const val BASE_URL = "https://newsapi.org/v2/"

@@ -20,9 +20,7 @@ class MainViewModel @Inject constructor(
     private val repository: MainRepository
 ) : ViewModel() {
 
-//    val newsData: LiveData<List<NewsData>> = getSavedFavorite().switchMap {
-//        repository.getNewsList()
-//    }
+    private lateinit var disposable: Disposable
 
     val newsData: LiveData<List<NewsData>> = repository.getNewsList()
 
@@ -30,12 +28,18 @@ class MainViewModel @Inject constructor(
     val refreshStatus: LiveData<Boolean>
         get() = _refreshStatus
 
-    // 아이템을 고를 경우 해당 아이템의 id와 view를 넘
+    // 아이템을 고를 경우 해당 아이템의 id와 view를 넘김
     private val _detailViewData = MutableLiveData<Pair<NewsData, List<Pair<View, String>>>>()
     val detailViewData: LiveData<Pair<NewsData, List<Pair<View, String>>>>
         get() = _detailViewData
 
-    private lateinit var disposable: Disposable
+    private val _showInfoData = MutableLiveData<Boolean>()
+    val showInfoData: LiveData<Boolean>
+        get() = _showInfoData
+
+    private val _resetData = MutableLiveData<Boolean>()
+    val resetData: LiveData<Boolean>
+        get() = _resetData
 
     init {
         observeFinish()
@@ -57,12 +61,11 @@ class MainViewModel @Inject constructor(
             }
     }
 
-//    private fun getSavedFavorite(): MutableLiveData<Int> {
-//        return savedStateHandle.getLiveData(FAVORITE_SAVED_STATE_KEY, NO_FAVORITE)
-//    }
+    fun showInformationPage() {
+        _showInfoData.postValue(true)
+    }
 
-    companion object {
-        private const val NO_FAVORITE = -1
-        private const val FAVORITE_SAVED_STATE_KEY = "FAVORITE_SAVED_STATE_KEY"
+    fun showResetDialog() {
+        _resetData.postValue(true)
     }
 }

@@ -20,8 +20,6 @@ class NewsAdapter(private val mainViewModel: MainViewModel) :
             LayoutInflater.from(parent.context), parent, false
         )
 
-//        binding.viewModel = answersViewModel
-
         return ResultViewHolder(
             binding, mainViewModel
         )
@@ -52,7 +50,7 @@ class NewsAdapter(private val mainViewModel: MainViewModel) :
 
                 root.setOnClickListener {
                     val viewList = listOf(
-                        Pair(binding.root, "image_view"),
+                        Pair(titleView, "image_view"),
                         Pair(newsTitle, "title_string"),
                         Pair(newsContent, "contents_string")
                     )

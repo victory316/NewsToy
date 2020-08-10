@@ -47,14 +47,14 @@ class DetailActivity : DaggerAppCompatActivity() {
         window.sharedElementsUseOverlay = false
 
         window.sharedElementEnterTransition = MaterialContainerTransform().apply {
-            addTarget(binding.detailConstraintParent)
+            addTarget(binding.detailImageView)
             fadeMode = MaterialContainerTransform.FADE_MODE_IN
             fitMode = MaterialContainerTransform.FIT_MODE_AUTO
             duration = 500
         }
 
         window.sharedElementReturnTransition = MaterialContainerTransform().apply {
-            addTarget(binding.detailConstraintParent)
+            addTarget(binding.detailImageView)
             fadeMode = MaterialContainerTransform.FADE_MODE_IN
             fitMode = MaterialContainerTransform.FIT_MODE_AUTO
             duration = 500
